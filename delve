@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Looking for AFP drives on $1..."
+
+nmap -vv -p548 $1 | grep "Discovered open port" | cut -d " " -f 6 | xargs -I {} echo "afp://{}"
